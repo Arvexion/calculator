@@ -4,15 +4,18 @@ let operator = '';
 let secondNum = '';
 let position = 1;
 
+// Gets the reference of the divs
 const display = document.querySelector('.display');
 const container = document.querySelector('.buttons-input');
 
+// Does the calculations based on user inputs
 container.addEventListener('click', (event) => {
     if (event.target.tagName !== 'BUTTON') return;
 
     let symbol = event.target.textContent
     const operators = ['+', '-', '*', '/'];
 
+    // If button clicked was a symbol, use that on calculation and if twice clicked then calculates it
     if (operators.includes(symbol)) {
         if (firstNum && secondNum && operator) {
             firstNum = operate(firstNum, operator, secondNum);
@@ -22,15 +25,18 @@ container.addEventListener('click', (event) => {
         operator = symbol;
         position = 2
     } 
+    // Calculates the operation and prevents multiple calculations
     else if (symbol === '=') {
         if (firstNum && secondNum && operator) {
             firstNum = operate(firstNum, operator, secondNum);
             clearDisplay()
         }
-        
-    } else if (position === 1) {
+    } 
+    // Inserts the user inputs based on its position
+    else if (position === 1) {
         firstNum += symbol;
-    } else if (position === 2) {
+    } 
+    else if (position === 2) {
         secondNum += symbol;
     }
 
@@ -38,16 +44,19 @@ container.addEventListener('click', (event) => {
 })
 
 
+// Update the screen based on the current values
 function updateDisplay() {
     display.textContent = `${firstNum} ${operator} ${secondNum}`.trim();
 }
 
 
+// Resets the current values
 function clearDisplay() {
     operator = '';
     secondNum = '';
     position = 1;
 }
+
 
 // Returns the result of the calculator operation 
 function operate(firstNum, operator, secondNum) {
