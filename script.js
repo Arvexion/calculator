@@ -55,8 +55,6 @@ function operate(firstNum, operator, secondNum) {
             return multiply(Number(firstNum), Number(secondNum));
         case '/':
             return divide(Number(firstNum), Number(secondNum));
-        default: 
-            return "ERROR || Invalid Operator";
     }
 }
 
@@ -77,5 +75,5 @@ function multiply(a, b) {
 
 // Returns the quotient of two numbers
 function divide(a, b) {
-    return a / b;
+    return (a / b).toFixed(2);
 }
