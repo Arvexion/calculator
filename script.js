@@ -18,7 +18,8 @@ container.addEventListener('click', (event) => {
     // If button clicked was a symbol, use that on calculation and if twice clicked then calculates it
     if (operators.includes(symbol)) {
         if (firstNum && secondNum && operator) {
-            firstNum = operate(firstNum, operator, secondNum);
+            let newNum = operate(firstNum, operator, secondNum);
+            firstNum = newNum
             clearDisplay()
         }
 
@@ -28,10 +29,17 @@ container.addEventListener('click', (event) => {
     // Calculates the operation and prevents multiple calculations
     else if (symbol === '=') {
         if (firstNum && secondNum && operator) {
-            firstNum = operate(firstNum, operator, secondNum);
+            let newNum = operate(firstNum, operator, secondNum);
+            firstNum = newNum
             clearDisplay()
         }
     } 
+
+    // Clears the whole screen 
+    else if (symbol === 'Clear') {
+        clearDisplay();
+    }
+
     // Inserts the user inputs based on its position
     else if (position === 1) {
         firstNum += symbol;
@@ -52,6 +60,7 @@ function updateDisplay() {
 
 // Resets the current values
 function clearDisplay() {
+    firstNum = '';
     operator = '';
     secondNum = '';
     position = 1;
