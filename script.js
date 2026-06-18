@@ -18,7 +18,8 @@ container.addEventListener('click', (event) => {
         position = 2
     } 
     else if (symbol === '=') {
-        firstNum = operate(firstNum, operator, secondNum);
+        let firstNum = operate(firstNum, operator, secondNum);
+        clearDisplay()
     } else if (position === 1) {
         firstNum += symbol;
     } else if (position === 2) {
@@ -28,6 +29,11 @@ container.addEventListener('click', (event) => {
     updateDisplay();
 })
 
+function clearDisplay() {
+    operator = '';
+    secondNum = '';
+    position = 1;
+}
 
 function updateDisplay() {
     display.textContent = `${firstNum} ${operator} ${secondNum}`
