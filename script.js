@@ -1,3 +1,9 @@
+// Calculator operations vars
+let firstNum = 0;
+let operator = null;
+let secondNum = 0;
+
+
 // Returns the sum of two numbers
 function add(a, b) {
     return a + b;
