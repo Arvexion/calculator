@@ -23,8 +23,11 @@ container.addEventListener('click', (event) => {
         position = 2
     } 
     else if (symbol === '=') {
-        firstNum = operate(firstNum, operator, secondNum);
-        clearDisplay()
+        if (firstNum && secondNum && operator) {
+            firstNum = operate(firstNum, operator, secondNum);
+            clearDisplay()
+        }
+        
     } else if (position === 1) {
         firstNum += symbol;
     } else if (position === 2) {
