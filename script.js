@@ -37,14 +37,16 @@ container.addEventListener('click', (event) => {
     updateDisplay();
 })
 
+
+function updateDisplay() {
+    display.textContent = `${firstNum} ${operator} ${secondNum}`.trim();
+}
+
+
 function clearDisplay() {
     operator = '';
     secondNum = '';
     position = 1;
-}
-
-function updateDisplay() {
-    display.textContent = `${firstNum} ${operator} ${secondNum}`.trim();
 }
 
 // Returns the result of the calculator operation 
