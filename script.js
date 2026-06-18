@@ -10,6 +10,7 @@ const container = document.querySelector('.buttons-input');
 
 // Does the calculations based on user inputs
 container.addEventListener('click', (event) => {
+    // Checks if button got actually clicked
     if (event.target.tagName !== 'BUTTON') return;
 
     let symbol = event.target.textContent
