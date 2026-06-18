@@ -48,6 +48,7 @@ container.addEventListener('click', (event) => {
         secondNum += symbol;
     }
 
+    // Updates the screen every button click
     updateDisplay();
 })
 
