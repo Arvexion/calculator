@@ -14,11 +14,16 @@ container.addEventListener('click', (event) => {
     const operators = ['+', '-', '*', '/'];
 
     if (operators.includes(symbol)) {
+        if (firstNum && secondNum && operator) {
+            firstNum = operate(firstNum, operator, secondNum);
+            clearDisplay()
+        }
+
         operator = symbol;
         position = 2
     } 
     else if (symbol === '=') {
-        let firstNum = operate(firstNum, operator, secondNum);
+        firstNum = operate(firstNum, operator, secondNum);
         clearDisplay()
     } else if (position === 1) {
         firstNum += symbol;
