@@ -18,6 +18,8 @@ container.addEventListener('click', (event) => {
 
     // If button clicked was a symbol, use that on calculation and if twice clicked then calculates it
     if (operators.includes(symbol)) {
+        if (firstNum.toString().includes("BUDDY!")) return;
+
         if (firstNum && secondNum && operator) {
             let newNum = operate(firstNum, operator, secondNum);
             firstNum = newNum
@@ -31,8 +33,21 @@ container.addEventListener('click', (event) => {
     else if (symbol === '=') {
         if (firstNum && secondNum && operator) {
             let newNum = operate(firstNum, operator, secondNum);
-            firstNum = newNum
-            clearDisplay()
+            
+            if (newNum.toString().includes("BUDDY!")) {
+                // Shows the error message to the display
+                firstNum = newNum;
+                operator = '';
+                secondNum = '';
+                position = 1;
+            } else {
+                // Keep the answer on screen for next calculations
+                firstNum = newNum.toString();
+                operator = '';
+                secondNum = '';
+                position = 1;                
+            }
+            
         }
     } 
 
@@ -44,12 +59,20 @@ container.addEventListener('click', (event) => {
     }
 
     // Inserts the user inputs based on its position
-    else if (position === 1) {
-        firstNum += symbol;
-    } 
-    else if (position === 2) {
-        secondNum += symbol;
+    else {
+        // Clears the screen if it still has the error message
+        if (firstNum.toString().includes("BUDDY!")) {
+            clearDisplay();
+        }
+
+        // Sets the new numbers
+        else if (position === 1) {
+            firstNum += symbol;
+        } else if (position === 2) {
+            secondNum += symbol;
+        }
     }
+
 
     // Updates the screen every button click
     updateDisplay();
