@@ -16,27 +16,34 @@ container.addEventListener('click', (event) => {
     if (operators.includes(symbol)) {
         operator = symbol;
         position = 2
+    } 
+    else if (symbol === '=') {
+        firstNum = operate(firstNum, operator, secondNum);
     } else if (position === 1) {
         firstNum += symbol;
     } else if (position === 2) {
         secondNum += symbol;
     }
-    
+
     updateDisplay();
 })
 
+
+function updateDisplay() {
+    display.textContent = `${firstNum} ${operator} ${secondNum}`
+}
 
 // Returns the result of the calculator operation 
 function operate(firstNum, operator, secondNum) {
     switch (operator) {
         case '+':
-            return add(firstNum, secondNum);
+            return add(Number(firstNum), Number(secondNum));
         case '-':
-            return subtract(firstNum, secondNum);
+            return subtract(Number(firstNum), Number(secondNum));
         case '*':
-            return multiply(firstNum, secondNum);
+            return multiply(Number(firstNum), Number(secondNum));
         case '/':
-            return divide(firstNum, secondNum);
+            return divide(Number(firstNum), Number(secondNum));
         default: 
             return "ERROR || Invalid Operator";
     }
