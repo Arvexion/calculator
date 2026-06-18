@@ -41,7 +41,7 @@ function clearDisplay() {
 }
 
 function updateDisplay() {
-    display.textContent = `${firstNum} ${operator} ${secondNum}`
+    display.textContent = `${firstNum} ${operator} ${secondNum}`.trim();
 }
 
 // Returns the result of the calculator operation 
