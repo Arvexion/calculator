@@ -4,27 +4,27 @@ let operator = '';
 let secondNum = '';
 let position = 1;
 
-function getPressedButton() {
-    const container = document.querySelector('.buttons-input');
+const display = document.querySelector('.display');
+const container = document.querySelector('.buttons-input');
 
-    container.addEventListener('click', (event) => {
-        if (event.target.tagName === 'BUTTON') {
-            let symbol = event.target.textContent
-            const operators = ['+', '-', '*', '/'];
+container.addEventListener('click', (event) => {
+    if (event.target.tagName !== 'BUTTON') return;
 
-            if (operators.includes(symbol)) {
-                operator = symbol;
-                position = 2
-            } else if (position === 1) {
-                firstNum += symbol;
-            } else if (position === 2) {
-                secondNum += symbol;
-            }
+    let symbol = event.target.textContent
+    const operators = ['+', '-', '*', '/'];
 
-            return [firstNum, operator, secondNum];
-        }
-    })
-}
+    if (operators.includes(symbol)) {
+        operator = symbol;
+        position = 2
+    } else if (position === 1) {
+        firstNum += symbol;
+    } else if (position === 2) {
+        secondNum += symbol;
+    }
+    
+    updateDisplay();
+})
+
 
 // Returns the result of the calculator operation 
 function operate(firstNum, operator, secondNum) {
