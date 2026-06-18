@@ -1,7 +1,30 @@
 // Calculator operations vars
-let firstNum = 0;
-let operator = null;
-let secondNum = 0;
+let firstNum = '';
+let operator = '';
+let secondNum = '';
+let position = 1;
+
+function getPressedButton() {
+    const container = document.querySelector('.buttons-input');
+
+    container.addEventListener('click', (event) => {
+        if (event.target.tagName === 'BUTTON') {
+            let symbol = event.target.textContent
+            const operators = ['+', '-', '*', '/'];
+
+            if (operators.includes(symbol)) {
+                operator = symbol;
+                position = 2
+            } else if (position === 1) {
+                firstNum += symbol;
+            } else if (position === 2) {
+                secondNum += symbol;
+            }
+
+            return [firstNum, operator, secondNum];
+        }
+    })
+}
 
 // Returns the result of the calculator operation 
 function operate(firstNum, operator, secondNum) {
