@@ -39,6 +39,8 @@ container.addEventListener('click', (event) => {
     // Clears the whole screen 
     else if (symbol === 'Clear') {
         clearDisplay();
+        updateDisplay();
+        return;
     }
 
     // Inserts the user inputs based on its position
@@ -100,5 +102,8 @@ function multiply(a, b) {
 
 // Returns the quotient of two numbers
 function divide(a, b) {
+    if (b === 0) {
+        return "BUDDY! || You can't divide by zero.";
+    }
     return (a / b).toFixed(2);
 }
