@@ -18,7 +18,8 @@ container.addEventListener('click', (event) => {
 
     // If button clicked was a symbol, use that on calculation and if twice clicked then calculates it
     if (operators.includes(symbol)) {
-        if (firstNum = '') return;
+        // Checks if theres a firstNum
+        if (firstNum === '') return;
 
         if (firstNum.toString().includes("BUDDY!")) return;
 
