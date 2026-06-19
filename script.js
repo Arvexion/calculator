@@ -22,8 +22,18 @@ container.addEventListener('click', (event) => {
 
         if (firstNum && secondNum && operator) {
             let newNum = operate(firstNum, operator, secondNum);
-            firstNum = newNum
-            clearDisplay()
+            
+            if (newNum.toString().includes("BUDDY!")) {
+                firstNum = '';
+                operator = '';
+                secondNum = '';
+                position = 1;
+                updateDisplay();
+                return;
+            }
+
+            firstNum = newNum.toString();
+            secondNum = '';
         }
 
         operator = symbol;
@@ -128,5 +138,7 @@ function divide(a, b) {
     if (b === 0) {
         return "BUDDY! || You can't divide by zero.";
     }
-    return (a / b).toFixed(2);
+    let result = a / b;
+    // Round only if theres a decimal value
+    return result % 1 === 0 ? result : Number(result.toFixed(2));
 }
